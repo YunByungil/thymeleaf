@@ -82,6 +82,16 @@ public class BasicController {
         model.addAttribute("data", "Spring!");
         return "basic/literal";
     }
+
+    @GetMapping("/operation")
+    public String operation(Model model) {
+        model.addAttribute("nullData", null);
+        model.addAttribute("data", "Spring!");
+
+        return "basic/operation";
+
+    }
+
     @Data // 내부에서 사용할 클래스
     static class User {
         private String username;
