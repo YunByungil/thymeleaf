@@ -111,6 +111,12 @@ public class BasicController {
         return "basic/condition";
     }
 
+    @GetMapping("/comments")
+    public String comment(Model model) {
+        model.addAttribute("data", "Spring!");
+        return "basic/comments";
+    }
+
     private void addUsers(Model model) { // each에서 사용, condition에서 사용
         List<User> list = new ArrayList<>();
         list.add(new User("UserA", 10));
