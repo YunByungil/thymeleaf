@@ -123,6 +123,14 @@ public class BasicController {
         return "basic/block";
     }
 
+    @GetMapping("/javascript") // 자바스크립트 인라인
+    public String javascript(Model model) {
+
+        model.addAttribute("user", new User("UserA", 10));
+        addUsers(model);
+        return "basic/javascript";
+    }
+
     private void addUsers(Model model) { // each에서 사용, condition에서 사용
         List<User> list = new ArrayList<>();
         list.add(new User("UserA", 10));

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!-- 자바스크립트 인라인 사용 전 => 주석도 다 인식하고 순수하게 값이 들어감. -->
+<!-- 순수한 자바스크립트에 타임리프 코드를 넣은 것 -->
+<script>
+    var username = [[${user.username}]];
+    var age = [[${user.age}]];
+
+    //자바스크립트 내추럴 템플릿
+    var username2 = /*[[${user.username}]]*/ "test username";
+    window.alert('인라인 사용 전'+username2);
+
+    //객체
+    var user = [[${user}]];
+</script>
+
+<!-- 자바스크립트 인라인 사용 후 -->
+<script th:inline="javascript">
+    // 사용 x => UserA 이렇게 들어가서 오류 !
+    // 사용 o => "UserA" 이렇게 자동으로 바꿔준다!! (텍스트 렌더링)
+    var username = [[${user.username}]];
+    var age = [[${user.age}]];
+
+    //자바스크립트 내추럴 템플릿 , 타임리프 렌더링해서 UserA 값을 넣어줌.
+    var username2 = /*[[${user.username}]]*/ "test username";
+    window.alert('인라인 사용 후'+username2);
+
+    //객체 JSON으로 담아준다
+    var user = [[${user}]];
+</script>
+
+
+
+<script th:inline="javascript">
+    /*
+    자바스크립트 인라인에서 타임리프 each를 사용하기 위함이다.
+    [# th:each] 문법,
+    그리고 마지막에 [/]로 닫아야한다.
+     */
+    [# th:each="user, stat : ${users}"]
+    var user[[${stat.count}]] = [[${user}]];
+    [/]
+</script>
+
+</body>
+</html>
