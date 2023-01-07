@@ -117,6 +117,12 @@ public class BasicController {
         return "basic/comments";
     }
 
+    @GetMapping("/block") // 블록, comments 이거는 주석임
+    public String block(Model model) {
+        addUsers(model);
+        return "basic/block";
+    }
+
     private void addUsers(Model model) { // each에서 사용, condition에서 사용
         List<User> list = new ArrayList<>();
         list.add(new User("UserA", 10));
