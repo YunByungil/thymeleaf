@@ -103,7 +103,15 @@ public class BasicController {
         return "basic/each";
     }
 
-    private void addUsers(Model model) { // each에서 사용,
+    @GetMapping("/condition") // 조건식 (if, unless, switch)
+    public String condition(Model model) {
+        //타임리프의 조건식
+        //if , unless ( if 의 반대)
+        addUsers(model);
+        return "basic/condition";
+    }
+
+    private void addUsers(Model model) { // each에서 사용, condition에서 사용
         List<User> list = new ArrayList<>();
         list.add(new User("UserA", 10));
         list.add(new User("UserB", 20));
