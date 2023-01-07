@@ -92,6 +92,11 @@ public class BasicController {
 
     }
 
+    @GetMapping("/attribute") // 속성 값 설정
+    public String attribute() {
+        return "basic/attribute";
+    }
+
     @Data // 내부에서 사용할 클래스
     static class User {
         private String username;
